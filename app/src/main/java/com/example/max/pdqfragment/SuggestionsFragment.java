@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class SuggestionsFragment extends Fragment {
+    private DictionaryDatabase dd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,17 +26,15 @@ public class SuggestionsFragment extends Fragment {
 
         String pdq = "";
         Bundle bundle = getArguments();
-        if(bundle != null) {
-            pdq = bundle.getString("pdq");
-        }
+        if(bundle != null) { pdq = bundle.getString("pdq"); }
 
         // get suggestions
-        DictionaryDatabase dd = new DictionaryDatabase(getActivity());
+        dd = new DictionaryDatabase(getActivity());
         ArrayList<String> suggestions = dd.getSuggestions(pdq);
 
         // display suggestions
         ListView lv = (ListView) fragmentView.findViewById(R.id.suggestionsList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, suggestions);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, suggestions);
         lv.setAdapter(adapter);
 
         return fragmentView;

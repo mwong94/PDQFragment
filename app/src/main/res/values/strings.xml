@@ -3,5 +3,6 @@
     <string name="letter1">P</string>
     <string name="letter2">D</string>
     <string name="letter3">Q</string>
-    <string name="dialog_title">Suggestions</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="test">Test</string>
 </resources>

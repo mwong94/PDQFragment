@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         dRNG.addPair('Y',0.9866670);
         dRNG.addPair('Z',1.0000000);
 
-        if (findViewById(R.id.fragmentContainer) != null) {
+        if (findViewById(R.id.topFragment) != null) {
             if (savedInstanceState != null) { return; }
             LettersFragment letters = new LettersFragment();
             letters.setArguments(getIntent().getExtras());
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragmentContainer, letters);
+            transaction.add(R.id.topFragment, letters);
             transaction.addToBackStack(null);
             transaction.commit();
         }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSuggestions(View view) {
         // open suggestions only if suggestions are not open already
-        if (findViewById(R.id.fragmentContainer) != null) {
+        if (findViewById(R.id.bottomFragment) != null) {
             findViewById(R.id.suggestionsButton).setVisibility(View.INVISIBLE);
             SuggestionsFragment suggestions = new SuggestionsFragment();
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            transaction.replace(R.id.fragmentContainer, suggestions);
+            transaction.replace(R.id.bottomFragment, suggestions);
             transaction.addToBackStack(null);
             transaction.commit();
         }
@@ -106,10 +106,6 @@ public class MainActivity extends AppCompatActivity {
         l1.setText(letter1.toString());
         l2.setText(letter2.toString());
         l3.setText(letter3.toString());
-
-        System.out.println("MAX: letter1... " + l1.getText());
-        System.out.println("MAX: letter2... " + l2.getText());
-        System.out.println("MAX: letter3... " + l3.getText());
     }
 
     private static class DistributedRNG<K> {

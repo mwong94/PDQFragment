@@ -2,11 +2,9 @@ package com.example.max.pdqfragment;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,7 +39,7 @@ public class SuggestionsDialog extends DialogFragment {
 
         // display suggestions
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, suggestions);
-        builder.setTitle(R.string.dialog_title)
+        builder.setTitle(R.string.suggestions)
                 .setAdapter(adapter, null);
 
         return builder.create();
