@@ -12,14 +12,15 @@ import java.util.ArrayList;
 class DictionaryDatabase extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "dictionary.db";
     private static final int DATABASE_VERSION = 1;
+    private SQLiteDatabase db;
 
     DictionaryDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        System.out.println("MAX: DictionaryDatabase()");
+        db = getReadableDatabase();
     }
 
     ArrayList<String> getSuggestions(String pdq) {
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         ArrayList<String> suggestions = new ArrayList<>();
 
@@ -44,5 +45,22 @@ class DictionaryDatabase extends SQLiteAssetHelper {
             }
         }
         return suggestions;
+    }
+
+    String getDefinition(String word) {
+        String definition = "";
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+        String[] sqlSelect = {"DISTINCT definition"};
+        String sqlTables = "entries";
+        String sqlSelection = "word LIKE '" + word + "'";
+
+        qb.setTables(sqlTables);
+        Cursor c = qb.query(db, sqlSelect, sqlSelection, null, null, null, null);
+
+        if(c != null && c.moveToFirst()) {
+            definition = c.getString(c.getColumnIndex("definition"));
+        }
+        return definition;
     }
 }

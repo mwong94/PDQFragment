@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            transaction.replace(R.id.bottomFragment, suggestions);
+            transaction.replace(R.id.bottomFragment, suggestions, "SUGGESTIONS");
             transaction.addToBackStack(null);
             transaction.commit();
         }
