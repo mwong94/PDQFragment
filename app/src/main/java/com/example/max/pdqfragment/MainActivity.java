@@ -86,23 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openSuggestionsDialog(View view) {
-        SuggestionsDialog dialog = new SuggestionsDialog();
-
-        String pdq = "";
-        TextView letter1 = (TextView) findViewById(R.id.letter1);
-        TextView letter2 = (TextView) findViewById(R.id.letter2);
-        TextView letter3 = (TextView) findViewById(R.id.letter3);
-        pdq += letter1.getText().charAt(0);
-        pdq += letter2.getText().charAt(0);
-        pdq += letter3.getText().charAt(0);
-
-        Bundle bundle = new Bundle();
-        bundle.putString("pdq", pdq);
-        dialog.setArguments(bundle);
-        dialog.show(getFragmentManager(), "SUGGESTIONS_DIALOG");
-    }
-
     public void updateLetters(View view) {
         // close previous suggestions if open
         SuggestionsFragment suggestions = (SuggestionsFragment) getSupportFragmentManager().findFragmentByTag("SUGGESTIONS");
