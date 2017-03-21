@@ -112,32 +112,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("MAX: letter3... " + l3.getText());
     }
 
-    /*
-    public void testDatabase(View view) {
-        DictionaryDatabase dd = new DictionaryDatabase(this);
-
-        String pdq = "";
-        TextView letter1 = (TextView) findViewById(R.id.letter1);
-        TextView letter2 = (TextView) findViewById(R.id.letter2);
-        TextView letter3 = (TextView) findViewById(R.id.letter3);
-        pdq += letter1.getText().charAt(0);
-        pdq += letter2.getText().charAt(0);
-        pdq += letter3.getText().charAt(0);
-
-        Cursor c = dd.getSuggestions(pdq);
-        if(c != null) {
-            if(c.moveToFirst()) {
-                do {
-                    System.out.println("MAX: " + c.getString(c.getColumnIndex("word")));
-                } while(c.moveToNext());
-            }
-        }
-        else {
-            System.out.println("MAX: testDatabase()... cursor is null");
-        }
-    }
-    */
-
     private static class DistributedRNG<K> {
         private TreeMap<K, Double> elements;
 
