@@ -64,12 +64,10 @@ public class MainActivity extends AppCompatActivity {
     public void suggestionsButtonHandler(View view) {
         Button b = (Button) findViewById(R.id.suggestionsButton);
         if(b.getText().equals("Suggestions")) {
-            System.out.println("MAX: suggestionsButtonHandler()... SUGGESTIONS");
             openSuggestions(view);
             b.setText(R.string.back);
         }
         else {
-            System.out.println("MAX: suggestionsButtonHandler()... BACK");
             SuggestionsFragment suggestions = (SuggestionsFragment) getSupportFragmentManager().findFragmentByTag("SUGGESTIONS");
             if (suggestions != null) getSupportFragmentManager().beginTransaction().remove(suggestions).commit();
             b.setText(R.string.suggestions);
