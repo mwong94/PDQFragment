@@ -30,8 +30,11 @@ class DictionaryDatabase extends SQLiteAssetHelper {
 
         String[] sqlSelect = {"DISTINCT word"};
         String sqlTables = "entries";
-        String sqlSelection = "word LIKE '" + l1 + "%" + l2 + "%" + l3 + "%'" +
-                           "OR word LIKE '" + l3 + "%" + l2 + "%" + l1 + "%'";
+        String sqlSelection = "";
+        sqlSelection += "word LIKE '" + l1 + "%" + l2 + "%" + l3 + "%'";
+        sqlSelection += "OR word LIKE '" + l3 + "%" + l2 + "%" + l1 + "%'";
+        if(l1.equals("X")) sqlSelection += "OR word LIKE 'E" + l1 + "%" + l2 + "%" + l3 + "%'";
+        if(l3.equals("X")) sqlSelection += "OR word LIKE 'E" + l3 + "%" + l2 + "%" + l1 + "%'";
         String sqlOrder = "word ASC";
 
         qb.setTables(sqlTables);

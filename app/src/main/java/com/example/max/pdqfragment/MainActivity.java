@@ -99,20 +99,20 @@ public class MainActivity extends AppCompatActivity {
         l2.setText("");
         l3.setText("");
 
-        Character letter1 = dRNG.getRandom();
-        Character letter2 = dRNG.getRandom();
-        Character letter3 = dRNG.getRandom();
+        String letter1 = dRNG.getRandom().toString();
+        String letter2 = dRNG.getRandom().toString();
+        String letter3 = dRNG.getRandom().toString();
 
-        l1.setText(letter1.toString());
-        l2.setText(letter2.toString());
-        l3.setText(letter3.toString());
+        l1.setText(letter1);
+        l2.setText(letter2);
+        l3.setText(letter3);
     }
 
     private static class DistributedRNG<K> {
         private TreeMap<K, Double> elements;
 
         private DistributedRNG() {
-            elements = new TreeMap<K, Double>();
+            elements = new TreeMap<>();
         }
         private void addPair(K k, Double d) {
             elements.put(k,d);
