@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Map;
@@ -60,10 +61,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void suggestionsButtonHandler(View view) {
+        Button b = (Button) findViewById(R.id.suggestionsButton);
+        if(b.getText().equals("Suggestions")) {
+            System.out.println("MAX: suggestionsButtonHandler()... SUGGESTIONS");
+            openSuggestions(view);
+            b.setText(R.string.back);
+        }
+        else {
+            System.out.println("MAX: suggestionsButtonHandler()... BACK");
+            SuggestionsFragment suggestions = (SuggestionsFragment) getSupportFragmentManager().findFragmentByTag("SUGGESTIONS");
+            if (suggestions != null) getSupportFragmentManager().beginTransaction().remove(suggestions).commit();
+            b.setText(R.string.suggestions);
+        }
+    }
+
     public void openSuggestions(View view) {
         // open suggestions only if suggestions are not open already
         if (findViewById(R.id.bottomFragment) != null) {
-            findViewById(R.id.suggestionsButton).setVisibility(View.INVISIBLE);
+            //findViewById(R.id.suggestionsButton).setVisibility(View.INVISIBLE);
+
             SuggestionsFragment suggestions = new SuggestionsFragment();
 
             String pdq = "";

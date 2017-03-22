@@ -25,8 +25,8 @@ public class SuggestionsFragment extends Fragment {
         View fragmentView = inflater.inflate(R.layout.suggestions_fragment, container, false);
         Context context = getActivity().getApplicationContext();
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         String pdq = "";
         Bundle bundle = getArguments();
@@ -69,7 +69,7 @@ public class SuggestionsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         getActivity().findViewById(R.id.suggestionsButton).setVisibility(View.VISIBLE);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
     }
 }
